@@ -1,0 +1,8 @@
+<h3><a href="<%=@bookmark.url%>" target="_blank"><%= @bookmark.title %></a></h3>
+<p><a href="<%=@bookmark.url%>" target="_blank"><%= @bookmark.url %></a></p>
+<p><%= @bookmark.genre %></p>
+<a href="/bookmarks/<%=@bookmark.id%>">View</a>
+<a href="/bookmarks/<%=@bookmark.id%>/edit">Edit</a>
+<form action="/bookmarks/<%=@bookmark.id%>/delete" method="post">
+  <button>Delete</button>
+</form>

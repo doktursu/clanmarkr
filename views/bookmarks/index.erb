@@ -1,0 +1,8 @@
+<h2>All Bookmarks</h2>
+
+<% if @bookmarks %>
+  <% @bookmarks.each do |bookmark| %>
+    <% @bookmark = bookmark %>
+    <%= erb :'bookmarks/_bookmark' %>
+  <% end %>
+<% end %>
