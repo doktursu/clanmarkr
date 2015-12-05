@@ -38,11 +38,18 @@ class DBBase
     result
   end
 
-  def self.all(conditions={})
-    where = conditions.map { |attribute, value| "#{attribute} = #{sql_sanitize(value, get_attributes[attribute])}" }.join(' AND ')
+  def self.all(conditions={},order=[])
+
+    # conditions = options[:conditions] || {}
+    # order = options[:order] || []
+
+    where = conditions.map { |attribute, value| "UPPER(REPLACE(#{attribute}, ' ', '')) LIKE UPPER(REPLACE(#{sql_sanitize_with_wilcards(value, get_attributes[attribute.to_sym])}, ' ', ''))" }.join(' OR ')
     where = "WHERE #{where}" unless where.empty?
 
-    results = run_sql("SELECT #{table_name}.* FROM #{table_name} #{where}")
+    order_by = order.join(', ')
+    order_by = "ORDER BY #{order_by}" unless order_by.empty?
+
+    results = run_sql("SELECT #{table_name}.* FROM #{table_name} #{where} #{order_by}")
     results.map { |result| self.new(result) }
   end
 
@@ -57,6 +64,21 @@ class DBBase
         "'#{value.to_s.gsub("'", "''")}'"
       when :text
         "'#{value.to_s.gsub("'", "''")}'"
+      when :integer
+        value.to_i
+      when :decimal
+        value.to_f
+      else
+        raise "Unrecognised data type `#{type}`"
+    end
+  end
+
+  def self.sql_sanitize_with_wilcards(value, type)
+    case type
+      when :string
+        "'%#{value.to_s.gsub("'", "''")}%'"
+      when :text
+        "'%#{value.to_s.gsub("'", "''")}%'"
       when :integer
         value.to_i
       when :decimal

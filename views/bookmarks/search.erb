@@ -1,0 +1,10 @@
+<h2><%= @attribute.capitalize %>: <%= @value.split.map(&:capitalize)*' ' %></h2>
+
+<% unless @bookmarks == [] %>
+  <% @bookmarks.each do |bookmark| %>
+    <% @bookmark = bookmark %>
+    <%= erb :'bookmarks/_bookmark' %>
+  <% end %>
+<% else %>
+  <p>No bookmarks found</p>
+<% end %>

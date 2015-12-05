@@ -1,8 +1,9 @@
 <fieldset>
+  <div style="background-color:<%=ColorPicker.color((@bookmark.title || 'C')[0])%>; width:30px; height:30px"><h3 style="color:#ffffff"><%= (@bookmark.title || ' ')[0].upcase %></h3></div>
   <label for="title">Title</label>
-  <input id="title" type="text" name="bookmark[title]" value="<%=@bookmark.title%>">
+  <input id="title" type="text" name="bookmark[title]" value="<%=@bookmark.title%>" required>
   <label for="url">URL</label>
-  <input id="url" type="text" name="bookmark[url]" value="<%=@bookmark.url%>">
+  <input id="url" type="url" name="bookmark[url]" value="<%=@bookmark.url%>" placeholder="http://" required>
   <label for="genre">Genre</label>
   <input id="genre" type="text" name="bookmark[genre]" value="<%=@bookmark.genre%>">
 </fieldset>
