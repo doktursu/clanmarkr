@@ -53,6 +53,25 @@ table {
 */
 
 body {
+  font-family: "Times New Roman", Times, serif;
+  color: #5D2C73;
+/*  color: #301E80;*/
+}
+
+a {
+  color: #301E80;
+  color: black;
+  text-decoration: none;
+  border-bottom: 4px solid rgba(93, 44, 115, 0.2);
+}
+
+a:hover {
+  color: #468499;
+  border-bottom: 4px solid rgba(70, 132, 153, 0.2);
+}
+
+a:active {
+  color: #DC4139;
 }
 
 /*
@@ -78,14 +97,82 @@ body {
 
 /*
   ========================================
+  Header
+  ========================================
+*/
+
+.header {
+  height: 40px;
+  margin-bottom:10px;
+  padding: 16px 12px 12px 12px;
+  background-color: rgba(173,131,191,0.12);
+  position: relative;
+}
+
+.logo {
+  font-size: 42px;
+  width: 200px;
+  float: left;
+  letter-spacing: 0.8px;
+}
+
+.options {
+  margin: 10px 0 20px 0;
+  float: right;
+}
+
+/*
+  ========================================
+  Navigation
+  ========================================
+*/
+
+.navigation {
+  float: right;
+}
+
+.navigation li {
+  display: inline-block;
+  margin-top: 20px;
+  margin-right: 15px;
+}
+
+.navigation li:last-child {
+  margin-right: 0;
+}
+
+.navigation a {
+  padding: 2px 4px;
+}
+
+/*
+  ========================================
+  Layout
+  ========================================
+*/
+
+.centered {
+  width: 600px;
+  margin: 0 auto;
+}
+
+/*
+  ========================================
   Bookmark
   ========================================
 */
 
 .bookmark {
-  display: inline;
-  width: 300px;
-  background-color: red;
+  display: inline-block;
+  width: 100%;
+  height: 45px;
+  border-bottom: 1px solid gray;
+  padding: 0;
+  line-height: 16px;
+}
+
+div.bookmark {
+  background-color: gray;
 }
 
 .bookmark-title,
@@ -93,11 +180,47 @@ body {
 .bookmark-genre,
 .bookmark-shape {
   display: inline-block;
-  color: red;
+  text-align: top;
+  vertical-align: middle;
+  font: inherit;
+}
+
+.bookmark-title {
+  width: 26%;
+  padding-left: 10px;
+  overflow: hidden;
+  max-height: 30px;
+  font-size: 16px;
+}
+
+.bookmark-title a {
+  border-bottom: none;
+}
+
+.bookmark-url {
+  width: 37%;
+  overflow: scroll;
+  font-size: 14px;
+}
+
+.bookmark-genre {
+  width: 10%;
+  font-size: 10px;
+  margin-right: 5px
+}
+
+div.bookmark-shape {
+  width: 0;
+  height: 0;
+  border-bottom: 45px solid rgba(255,255,255,0.25);
+  border-right: 45px solid transparent;
 }
 
 .bookmark-shape h3 {
-  padding: 10px;
+  font-family: inherit;
+  font-style: bold;
+  font-size: 20px;
+  padding: 20px 20px 6px 6px;
   text-align: center;
 }
 
@@ -109,5 +232,52 @@ body {
 
 .btn {
   display: inline-block;
-  border: 2px solid #000;
+  float: right;
+}
+
+.btn-form {
+  float: right;
+  margin-top: 12px;
+}
+
+.btn-special {
+  margin-top: 10px;
+}
+
+.bookmark .label {
+  font-size: 16px;
+  text-transform: capitalize;
+  vertical-align: bottom;
+  margin-bottom: 2px;
+  color: #5D2C73;
+}
+
+fieldset.label {
+  border-bottom: 4px double gray;
+}
+
+input.bookmark-title,
+input.bookmark-url,
+input.bookmark-genre,
+input.bookmark-shape {
+  height: 30px;
+}
+
+.error {
+  margin-top: 10px;
+}
+
+h2 {
+  text-align: center;
+  padding: 2px 0;
+  border-top: 2px solid rgba(93, 44, 115, 0.12);
+  border-bottom: 2px solid rgba(93, 44, 115, 0.12);
+}
+
+img {
+  position: absolute;
+  width: 74px;
+  opacity: 0.15;
+  top: -40px;
+  left: -92px;
 }

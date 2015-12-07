@@ -1,6 +1,13 @@
 <h2>Edit Bookmark</h2>
 
+<fieldset class="bookmark group label">
+  <div class="bookmark-shape"><h3 style="color:#ffffff"></h3></div>
+    <h3 class="bookmark-title label">Title</h3>
+    <p class="bookmark-genre label">Genre</p>
+    <p class="bookmark-url label">url</p>
+</fieldset>
+
 <form action="/bookmarks/<%=@bookmark.id%>/edit" method="post">
   <%= erb :'bookmarks/_form' %>
-  <button>Save</button>
+  <button class="btn btn-special">Save</button>
 </form>

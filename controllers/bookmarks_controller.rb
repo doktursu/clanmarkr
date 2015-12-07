@@ -1,5 +1,5 @@
 get '/bookmarks' do
-  order = ['title ASC']
+  order = ['UPPER(title) ASC']
   @bookmarks = Bookmark.all({}, order)
   erb :'bookmarks/index'
 end
@@ -10,16 +10,10 @@ get '/bookmarks/new' do
 end
 
 post '/bookmarks' do
-  params[:bookmark][:genre].downcase!
+  clean_up_params(params[:bookmark])
   bookmark = Bookmark.new(params[:bookmark])
   bookmark.save
   redirect to('/bookmarks')
-end
-
-get '/bookmarks/sort' do
-  order = [ params[:order] ]
-  @bookmarks = Bookmark.all({},order)
-  erb :'bookmarks/index'
 end
 
 get '/bookmarks/search' do
@@ -32,7 +26,8 @@ get '/bookmarks/search' do
     conditions = { @attribute.to_sym => @value.to_sym }
   end
 
-  order = ['title ASC']
+  order = [ params[:order] ]
+
   @bookmarks = Bookmark.all(conditions, order)
   erb :'bookmarks/search'
 end
@@ -49,7 +44,7 @@ end
 
 post '/bookmarks/:id/edit' do
   bookmark = Bookmark.find(params[:id])
-  params[:bookmark][:genre].downcase!
+  clean_up_params(params[:bookmark])
   bookmark.update_attributes(params[:bookmark])
   redirect to('/bookmarks')
 end
@@ -58,5 +53,12 @@ post '/bookmarks/:id/delete' do
   bookmark = Bookmark.find(params[:id])
   bookmark.destroy
   redirect to('/bookmarks')
+end
+
+def clean_up_params(params)
+  params[:title].strip!
+  params[:genre].strip!
+  params[:genre].downcase!
+  params[:url].strip!
 end
 

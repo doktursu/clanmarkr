@@ -1,8 +1,17 @@
 <h2>All Bookmarks</h2>
 
-<% if @bookmarks %>
+<fieldset class="bookmark group label">
+  <div class="bookmark-shape"><h3 style="color:#ffffff"></h3></div>
+    <h3 class="bookmark-title label">Title</h3>
+    <p class="bookmark-genre label">Genre</p>
+    <p class="bookmark-url label">url</p>
+</fieldset>
+
+<% unless @bookmarks.empty? %>
   <% @bookmarks.each do |bookmark| %>
     <% @bookmark = bookmark %>
     <%= erb :'bookmarks/_bookmark' %>
   <% end %>
+<% else %>
+  <p class="error">Create a new bookmark!</p>
 <% end %>

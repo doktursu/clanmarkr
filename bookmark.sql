@@ -18,6 +18,3 @@ END;
 $$ language 'plpgsql';
 
 CREATE TRIGGER update_bookmarks_modtime BEFORE UPDATE ON bookmarks FOR EACH ROW EXECUTE PROCEDURE  update_modified_column();
-
-INSERT INTO bookmarks (url, title, genre) VALUES ('https://google.com', 'Google', 'search engine');
-INSERT INTO bookmarks (url, title, genre) VALUES ('https://twitter.com', 'Twitter', 'social media');

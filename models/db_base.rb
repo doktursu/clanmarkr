@@ -40,9 +40,6 @@ class DBBase
 
   def self.all(conditions={},order=[])
 
-    # conditions = options[:conditions] || {}
-    # order = options[:order] || []
-
     where = conditions.map { |attribute, value| "UPPER(REPLACE(#{attribute}, ' ', '')) LIKE UPPER(REPLACE(#{sql_sanitize_with_wilcards(value, get_attributes[attribute.to_sym])}, ' ', ''))" }.join(' OR ')
     where = "WHERE #{where}" unless where.empty?
 

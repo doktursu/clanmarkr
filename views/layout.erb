@@ -5,41 +5,49 @@
   <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+<header class="centered group">
 
-<h1><a href="/">ClanMarkr</a></h1>
+  <div class="header">
 
-<nav>
-  <ul>
-    <li><a href="/bookmarks">All Bookmarks</a></li>
-    <li><a href="/bookmarks/new">Create Bookmark</a></li>
-<!--     <li><a href="/bookmarks/search">Search</a></li> -->
-    <li>
-      <form action="/bookmarks/search" method="get">
-        <label for="search-by">Search by:</label>
-        <select id="search-by" name="attribute">
-          <option value="genre">genre</option>
-          <option value="title">title</option>
-          <option value="all">all</option>
-        </select>
-        <input type="text" name="value">
-        <button>Search</button>
-      </form>
-      <form action="/bookmarks/sort" method="get">
-        <label for="order-by">Sort by:</label>
-        <select id="order-by" name="order">
-          <option value="title ASC">A-Z</option>
-          <option value="title DESC">Z-A</option>
-          <option value="modified DESC">newest first</option>
-          <option value="modified ASC">oldest first</option>
-          <option value="genre ASC, title ASC">genre</option>
-        </select>
-        <button>Submit</button>
-      </form>
-    </li>
-  </ul>
-</nav>
+    <h1 class="logo">ClanMarkr</h1>
+    <img src="/folder.ico" alt="bookmark image">
 
-<%= yield %>
+    <nav class="navigation">
+      <ul>
+        <li><a href="/bookmarks">All Bookmarks</a></li>
+        <li><a href="/bookmarks/new">Create Bookmark +</a></li>
+      </ul>
+    </nav>
+
+  </div>
+
+  <form class="options group" action="/bookmarks/search" method="get">
+
+    <label for="search-by">Search by:</label>
+    <select id="search-by" name="attribute">
+      <option value="all">All</option>
+      <option value="genre">Genre</option>
+      <option value="title">Title</option>
+    </select>
+    <input type="text" name="value">
+
+    <label for="order-by">Sort by:</label>
+    <select id="order-by" name="order">
+      <option value="UPPER(title) ASC">A-Z</option>
+      <option value="UPPER(title) DESC">Z-A</option>
+      <option value="modified DESC">Newest First</option>
+      <option value="modified ASC">Oldest First</option>
+      <option value="genre ASC, UPPER(title) ASC">Genre</option>
+    </select>
+    
+    <button>Submit</button>
+
+  </form>
+</header>
+
+<section class="centered">
+  <%= yield %>
+</section>
 
 </body>
 </html>

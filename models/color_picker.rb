@@ -2,54 +2,37 @@ class ColorPicker
 
   def self.color(letter)
     letter ||= 'C'
-    COLORS[letter.upcase]
+    return COLORS[letter.upcase] if COLORS[letter.upcase]
+    return "#7E4796"
   end
 
   COLORS = {
-    "A" => "#dc0e03",
+    "A" => "#DC4139",
     "B" => "#dd85ba",
-    "C" => "#555000",
-    "D" => "#555000",
-    "E" => "#555000",
-    "F" => "#1d7276",
-    "G" => "#800000",
-    "H" => "#555000",
-    "I" => "#555000",
-    "J" => "#555000",
-    "K" => "#555000",
-    "L" => "#555000",
-    "M" => "#555000",
-    "N" => "#555000",
-    "O" => "#555000",
-    "P" => "#555000",
-    "Q" => "#555000",
-    "R" => "#555000",
-    "S" => "#555000",
-    "T" => "#555000",
-    "U" => "#555000",
-    "V" => "#555000",
-    "W" => "#555000",
-    "X" => "#555000",
-    "Y" => "#555000",
-    "Z" => "#555000"
+    "C" => "#468499",
+    "D" => "#D9CD41",
+    "E" => "#660066",
+    "F" => "#1EB064",
+    "G" => "#752A2A",
+    "H" => "#B8DA91",
+    "I" => "#ffa500",
+    "J" => "#b0e0e6",
+    "K" => "#f6546a",
+    "L" => "#34426E",
+    "M" => "#088da5",
+    "N" => "#ccff00",
+    "O" => "#66cdaa",
+    "P" => "#ffc3a0",
+    "Q" => "#fa8072",
+    "R" => "#F868FF",
+    "S" => "#daa520",
+    "T" => "#A8E851",
+    "U" => "#6dc066",
+    "V" => "#3399ff",
+    "W" => "#404040",
+    "X" => "#8a2be2",
+    "Y" => "#ffc0cb",
+    "Z" => "#ffd700"
   }
 
 end
-
-
-# require 'uri'
-
-# begin
-#   uri = URI.parse('google.com/')
-# rescue
-#   puts 'URI not vaild'
-# end
-
-# # URI::InvalidURIError: bad URI(is not URI?): ://pocket.appappeal.com/
-
-# uri.host.split('.').first
-
-
-# require 'open-uri'
-# open('http://www.skysu.net/').read =~ /<title>(.*?)<\/title>/
-# p $1

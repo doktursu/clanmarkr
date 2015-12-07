@@ -1,16 +1,16 @@
 
 <% if @bookmark %>
-  <div class="bookmark group">
+  <fieldset class="bookmark group">
     <div class="bookmark-shape" style="background-color:<%=ColorPicker.color(@bookmark.title[0])%>"><h3 style="color:#ffffff"><%= @bookmark.title[0].upcase %></h3></div>
-    <h3 class="bookmark-title"><a href="<%=@bookmark.url%>" target="_blank"><%= @bookmark.title %></a></h3>
-    <p class="bookmark-url"><a href="<%=@bookmark.url%>" target="_blank"><%= @bookmark.url %></a></p>
-    <p class="bookmark-genre"><%= @bookmark.genre %></p>
-    <a class="btn btn-view" href="/bookmarks/<%=@bookmark.id%>">View</a>
-    <a class="btn btn-edit" href="/bookmarks/<%=@bookmark.id%>/edit">Edit</a>
-    <form class="btn btn-edit" action="/bookmarks/<%=@bookmark.id%>/delete" method="post">
-      <button>Delete</button>
+      <h3 class="bookmark-title"><a href="<%=@bookmark.url%>" target="_blank"><%= @bookmark.title %></a></h3>
+      <p class="bookmark-genre"><%= @bookmark.genre %></p>
+      <p class="bookmark-url"><a href="<%=@bookmark.url%>" target="_blank"><%= @bookmark.url %></a></p>
+<!--     <a class="btn btn-view" href="/bookmarks/<%=@bookmark.id%>">View</a> -->
+    <form class="btn-form" action="/bookmarks/<%=@bookmark.id%>/delete" method="post">
+      <button class="btn btn-delete">Delete</button>
     </form>
-  </div>
+    <form class="btn-form" action="/bookmarks/<%=@bookmark.id%>/edit" method="get">
+      <button class="btn btn-edit">Edit</button>
+    </form>
+  </fieldset>
 <% end %>
-
-<% #@bookmark.hex_color%>
